@@ -10,7 +10,7 @@ interface CreateCampaignProps {
 export const CreateCampaign: React.FC<CreateCampaignProps> = ({ onBack, onSubmit }) => {
   // Store local state for each product's configuration
   // In a real app, this would be a complex object map
-  const [products, setProducts] = useState(MOCK_NEW_PRODUCTS);
+  const [products] = useState(MOCK_NEW_PRODUCTS);
 
   return (
     <div className="bg-white min-h-[calc(100vh-80px)]">

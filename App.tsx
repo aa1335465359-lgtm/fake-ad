@@ -161,7 +161,7 @@ function App() {
       e.dataTransfer.effectAllowed = "move";
   };
 
-  const handleDragOver = (e: React.DragEvent, index: number) => {
+  const handleDragOver = (e: React.DragEvent) => {
       e.preventDefault(); // Necessary to allow dropping
       e.dataTransfer.dropEffect = "move";
   };
@@ -303,7 +303,7 @@ function App() {
                                 className="flex items-center justify-between px-2 py-1.5 hover:bg-gray-50 cursor-move text-xs text-gray-700 rounded select-none group"
                                 draggable
                                 onDragStart={(e) => handleDragStart(e, index)}
-                                onDragOver={(e) => handleDragOver(e, index)}
+                                onDragOver={handleDragOver}
                                 onDrop={(e) => handleDrop(e, index)}
                            >
                               <div className="flex items-center gap-2">
