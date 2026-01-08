@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temu 商家后台 - 商品推广</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        background-color: #f6f7fb;
+      }
+      /* Custom scrollbar */
+      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+      .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      /* Remove number input spinners */
+      input[type=number]::-webkit-inner-spin-button, 
+      input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; margin: 0; 
+      }
+      
+      /* Column Resizer Styles */
+      .resizer {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        cursor: col-resize;
+        user-select: none;
+        z-index: 10;
+      }
+      .resizer:hover, .resizing {
+        background-color: #ff6600;
+      }
+      .table-row-grid {
+        display: grid;
+        align-items: center;
+      }
+      /* Smooth collapse transition */
+      .scorecard-content {
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        overflow: hidden;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "chart.js/": "https://esm.sh/chart.js@^4.5.1/",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "vite": "https://esm.sh/vite@^7.3.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+{
+  "name": "Temu Merchant Ad Dashboard",
+  "description": "A replica of the Temu seller advertising backend for managing product campaigns.",
+  "requestFramePermissions": []
+}
