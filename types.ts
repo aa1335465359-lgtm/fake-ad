@@ -1,4 +1,5 @@
 
+
 export interface AdProduct {
   id: string;
   skuId: string; // Used as Goods ID
@@ -40,8 +41,8 @@ export type SortConfig = {
 export const MOCK_DATA: AdProduct[] = [
   {
     id: '1001',
-    skuId: '601105512248304',
-    spuId: '1439674289',
+    skuId: '60110829341',
+    spuId: '93284710',
     name: '新款大码女装土圆领针织秋冬修身显瘦收腰百搭包...',
     imageUrl: 'https://loremflickr.com/200/200/dress?lock=1',
     status: 'active',
@@ -64,8 +65,8 @@ export const MOCK_DATA: AdProduct[] = [
   },
   {
     id: '1002',
-    skuId: '601105394730309',
-    spuId: '8180830509',
+    skuId: '60110283745',
+    spuId: '18273645',
     name: '潮流新款长袖露肩复古印花 大码连衣裙',
     imageUrl: 'https://loremflickr.com/200/200/dress?lock=2',
     status: 'active',
@@ -88,8 +89,8 @@ export const MOCK_DATA: AdProduct[] = [
   },
   {
     id: '1003',
-    skuId: '601105372745046',
-    spuId: '3084187852',
+    skuId: '60110912837',
+    spuId: '56473829',
     name: '大码女性波西米亚佩斯利印花露肩荷叶边裙，休...',
     imageUrl: 'https://loremflickr.com/200/200/dress?lock=3',
     status: 'active',
@@ -112,8 +113,8 @@ export const MOCK_DATA: AdProduct[] = [
   },
   {
     id: '1004',
-    skuId: '601105372570743',
-    spuId: '3497408280',
+    skuId: '60110564738',
+    spuId: '29384756',
     name: '大码女士印花褶皱腰带不对称下摆长袖衬衫，时...',
     imageUrl: 'https://loremflickr.com/200/200/dress?lock=4',
     status: 'active',

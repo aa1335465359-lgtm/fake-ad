@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react';
-import { Search, SlidersHorizontal, Settings, Plus, ChevronDown, ChevronRight, GripVertical } from 'lucide-react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { Search, SlidersHorizontal, Settings, Plus, ChevronDown, ChevronRight, GripVertical, AlertTriangle } from 'lucide-react';
 import { MOCK_DATA, AdProduct, SortConfig, COLUMNS_CONFIG } from './types';
 import { AdTable } from './components/AdTable';
 import { RoasEditModal } from './components/RoasEditModal';
@@ -14,7 +14,7 @@ const Header = ({ view, setView }: { view: string, setView: (v: any) => void }) 
         <div className="h-12 px-6 flex items-center justify-between">
         <div className="flex items-center gap-8">
             <div className="text-2xl font-black text-gray-800 tracking-tighter flex items-center gap-1 cursor-pointer select-none" onClick={() => setView('dashboard')}>
-            <span className="text-[#ff6600]">TEMU</span>
+            <span className="text-[#ff6600]">SHOP</span>
             <span className="text-gray-400 text-sm font-normal ml-2 border-l pl-2 border-gray-300">Ads management</span>
             </div>
             <nav className="flex gap-8 text-sm font-medium text-gray-600 h-12">
@@ -51,11 +51,37 @@ const ScoreCard = ({ title, value, subtext }: { title: string, value: string, su
   </div>
 );
 
+const DisclaimerModal = ({ onConfirm }: { onConfirm: () => void }) => (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm">
+      <div className="bg-white rounded-lg shadow-2xl w-[450px] p-6 text-center">
+        <div className="flex justify-center mb-4">
+          <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+            <AlertTriangle className="text-[#ff6600]" size={28} />
+          </div>
+        </div>
+        <h2 className="text-xl font-bold text-gray-900 mb-2">免责声明</h2>
+        <div className="text-sm text-gray-600 space-y-3 mb-6 text-left bg-gray-50 p-4 rounded border border-gray-100">
+            <p>1. 本网站仅作为一个<strong>模拟后台管理系统</strong>的交互设计展示工具。</p>
+            <p>2. 页面中展示的所有数据（包括但不限于商品信息、销售金额、订单量、IDs等）均为<strong>虚构数据</strong>。</p>
+            <p>3. 本工具<strong>不具备</strong>任何实际商业功能，不涉及任何真实交易或广告投放。</p>
+            <p>4. 请勿将本页面展示的内容作为任何商业决策的参考。</p>
+        </div>
+        <button 
+          onClick={onConfirm}
+          className="w-full bg-[#ff6600] hover:bg-[#e05500] text-white py-2.5 rounded font-medium transition-colors"
+        >
+          我已知晓并同意
+        </button>
+      </div>
+    </div>
+);
+
 function App() {
   const [view, setView] = useState<'dashboard' | 'create' | 'report'>('dashboard');
   const [products, setProducts] = useState<AdProduct[]>(MOCK_DATA);
   const [editingRoasProduct, setEditingRoasProduct] = useState<AdProduct | null>(null);
   const [sortConfig, setSortConfig] = useState<SortConfig>({ key: null, direction: 'asc' });
+  const [showDisclaimer, setShowDisclaimer] = useState(true);
   
   // State for Column Configuration (Order and Visibility)
   const [allColumns, setAllColumns] = useState(COLUMNS_CONFIG.map(c => ({ ...c, visible: c.default })));
@@ -181,6 +207,7 @@ function App() {
   if (view === 'create') {
     return (
       <div className="min-h-screen bg-[#f6f7fb]">
+        {showDisclaimer && <DisclaimerModal onConfirm={() => setShowDisclaimer(false)} />}
         <Header view={view} setView={setView} />
         <main className="max-w-[1600px] mx-auto p-4">
            <CreateCampaign 
@@ -198,6 +225,7 @@ function App() {
   if (view === 'report') {
       return (
         <div className="min-h-screen bg-[#f6f7fb]">
+          {showDisclaimer && <DisclaimerModal onConfirm={() => setShowDisclaimer(false)} />}
           <Header view={view} setView={setView} />
           <main className="max-w-[1600px] mx-auto p-4">
             <ReportView products={products} />
@@ -211,6 +239,8 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#f6f7fb] font-sans text-gray-900" onClick={() => setIsColumnConfigOpen(false)}>
+      {showDisclaimer && <DisclaimerModal onConfirm={() => setShowDisclaimer(false)} />}
+      
       <Header view={view} setView={setView} />
 
       <main className="flex-1 max-w-[1800px] mx-auto p-4 space-y-4 w-full">
