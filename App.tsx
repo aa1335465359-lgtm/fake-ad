@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Search, SlidersHorizontal, Settings, Plus, ChevronDown, ChevronRight, GripVertical, AlertTriangle } from 'lucide-react';
 import { MOCK_DATA, AdProduct, SortConfig, COLUMNS_CONFIG } from './types';
 import { AdTable } from './components/AdTable';
